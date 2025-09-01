@@ -1,20 +1,35 @@
 <?php
-ini_set('display_erros', 1);
-error_reporting(E_ALL);
 
-require_once 'model.php';
+require_once __DIR__ . '/../models/ProdutoModel.php';
 
-if (isset($_POST['Gravar'])) {
-  $codigo=$_POST['cx_codigo'];
-  $produto=$_POST['cx_produto'];
-  $validade=$_POST['cx_validade'];
-  $preco=$_POST['cx_preco'];
+class ProdutoController {
+    public function index() {
+        require_once __DIR__ . '/../views/formulario.php';
+    }
+    public function salvar() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $model = new ProdutoModel();
 
-  if (acessarBanco::grava($codigo,$produto,$validade,$preco)) {
-    $mensagem="Sucesso!";
-  } else {
-    $mensagem="Falha!";
-  }
-  include 'view.php';
+            // Pega os dados do formulário
+            $codigo   = $_POST['cx_codigo'];
+            $produto  = $_POST['cx_produto'];
+            $validade = $_POST['cx_validade'];
+            $preco    = $_POST['cx_preco'];
+            
+            // Chama o método salvar do model
+            $sucesso = $model->salvar($codigo, $produto, $validade, $preco);
+
+            // Prepara a mensagem para o usuário
+            if ($sucesso) {
+                $mensagem = ['texto' => 'Produto cadastrado com sucesso!', 'tipo' => 'success'];
+            } else {
+                $mensagem = ['texto' => 'Ocorreu um erro ao cadastrar.', 'tipo' => 'danger'];
+            }
+
+            // Após processar, carrega a view do formulário novamente,
+            // passando a mensagem de status para ela.
+            require_once __DIR__ . '/../views/formulario.php';
+        }
+    }
 }
 ?>
