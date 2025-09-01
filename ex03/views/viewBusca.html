@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Produto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+      <h2 class="text-center mb-4">Buscar Produto</h2>
+
+      <form method="GET" action="controller.php">
+        <input type="hidden" name="tipo" value="busca">
+        <div class="mb-3">
+          <label for="cx_busca" class="form-label">Código ou Nome</label>
+          <input type="text" class="form-control" id="cx_busca" name="cx_busca" required>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Buscar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
