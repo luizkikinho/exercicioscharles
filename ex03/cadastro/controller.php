@@ -6,8 +6,11 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
   $validade=$_POST['cx_validade'];
   $preco=$_POST['cx_preco'];
 
-  $res=acessarBanco::grava($codigo,$produto,$validade,$preco);
-  return($res);
+  if (acessarBanco::grava($codigo,$produto,$validade,$preco)) {
+    $mensagem="Sucesso!";
+  } else {
+    $mensagem="Falha!";
+  }
   include 'view.php';
 }
 ?>
