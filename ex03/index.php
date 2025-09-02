@@ -3,8 +3,8 @@
 // Pega a ação da URL. Se não houver, a ação padrão é 'index'.
 $acao = $_GET['acao'] ?? 'index';
 
-// Inclui o controller
-require_once DIR . '/../controllers/controllerBusca.php';
+// Inclui o controller correto
+require_once __DIR__ . '/controllers/controllerCadastro.php';
 
 // Cria uma instância do controller
 $controller = new ProdutoController();
@@ -17,9 +17,10 @@ switch ($acao) {
     case 'salvar':
         $controller->salvar();
         break;
+    case 'buscar':          // se quiser buscar
+        $controller->buscar();
+        break;
     default:
-        // Se a ação não for reconhecida, pode exibir um erro 404 ou redirecionar
         echo "Erro 404: Página não encontrada";
         break;
 }
-?>
