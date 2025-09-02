@@ -24,7 +24,7 @@
       <?php endif; ?>
 
       <div class="mt-4 text-center">
-        <a href="busca.html" class="btn btn-outline-secondary">Nova busca</a>
+        <a href="viewBusca.html" class="btn btn-outline-secondary">Nova busca</a>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@ class acessarBanco {
 
       return $stmt->fetch(PDO::FETCH_ASSOC);
 
-    } catch (PDOException $erro) {
+    } catch (PDOException $erro) {  
       echo "Erro na busca: " . $erro->getMessage();
       return false;
     }

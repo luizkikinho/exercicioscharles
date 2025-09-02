@@ -24,7 +24,7 @@ switch ($acao) {
                 <div class="card shadow p-5 mx-auto" style="max-width: 400px;">
                     <h1 class="mb-4">Sistema de Produtos</h1>
                     <a href="index.php?acao=index" class="btn btn-primary w-100 mb-3">Cadastro de Produtos</a>
-                    <a href="index.php?acao=buscar" class="btn btn-success w-100">Buscar Produtos</a>
+                    <a href="views/viewBusca.html?acao=buscar" class="btn btn-success w-100">Buscar Produtos</a>
                 </div>
             </div>
         </body>

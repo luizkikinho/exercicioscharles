@@ -43,12 +43,14 @@ $mensagem = $_GET['mensagem'] ?? null;
         <input type="number" class="form-control" id="preco" name="cx_preco" step="0.01" required>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+      <button type="submit" class="btn btn-primary w-100 mb-2">Cadastrar</button>
     </form>
+
+    <!-- Botão Voltar -->
+    <button onclick="history.back()" class="btn btn-outline-secondary w-100">Voltar</button>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
