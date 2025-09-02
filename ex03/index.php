@@ -4,7 +4,7 @@
 $acao = $_GET['acao'] ?? 'index';
 
 // Inclui o controller
-require_once 'controllers/ProdutoController.php';
+require_once DIR . '/../controllers/controllerBusca.php';
 
 // Cria uma instância do controller
 $controller = new ProdutoController();

@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../models/ProdutoModel.php';
+require_once __DIR__ . '/../models/modelCadastro.php';
 
 class ProdutoController {
     public function index() {
-        require_once __DIR__ . '/../views/formulario.php';
+        require_once __DIR__ . '/../views/viewCadastro.php';
     }
     public function salvar() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -28,7 +28,7 @@ class ProdutoController {
 
             // Após processar, carrega a view do formulário novamente,
             // passando a mensagem de status para ela.
-            require_once __DIR__ . '/../views/formulario.php';
+            require_once __DIR__ . '/../views/viewCadastro.php';
         }
     }
 }
