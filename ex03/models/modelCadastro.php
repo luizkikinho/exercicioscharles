@@ -1,25 +1,31 @@
 <?php
+class ProdutoModel{
 
-class ProdutoModel {
     public function salvar($codigo, $produto, $validade, $preco) {
         try {
-            $pdo = new PDO("mysql:host=localhost;dbname=empresa;charset=utf8", "root", "");
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Conexão com o banco
+            $conecta = new PDO("mysql:host=localhost;dbname=empresa", "root", "");
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "INSERT INTO produtos (codigo, produto, validade, preco) VALUES (:codigo, :produto, :validade, :preco)";
-            $stmt = $pdo->prepare($sql);
+            // Converte a data de dd/mm/aaaa para Y-m-d
+            $dataFormatada = DateTime::createFromFormat('d/m/Y', $validade);
+            $validade = $dataFormatada ? $dataFormatada->format('Y-m-d') : null;
 
-            $stmt->bindParam(':codigo', $codigo);
-            $stmt->bindParam(':produto', $produto);
-            $stmt->bindParam(':validade', $validade);
-            $stmt->bindParam(':preco', $preco);
+            // Monta o SQL
+            $sql = "INSERT INTO produtos (codigo, produto, data_validade, preco) 
+                    VALUES ('".$codigo."', '".$produto."', '".$validade."', '".$preco."')";
 
-            return $stmt->execute();
+            // Executa
+            $conecta->exec($sql);
 
-        } catch (PDOException $e) {
-            error_log($e->getMessage());
+            echo "<h1>Produto gravado com sucesso!</h1>";
+            return true;
+
+        } catch(PDOException $erro) {
+            echo "Falha ao gravar: " . $erro->getMessage();
             return false;
         }
     }
 }
 ?>
+
